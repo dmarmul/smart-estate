@@ -1,0 +1,45 @@
+version: '3.8'
+services:
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - $SPRING_LOCAL_PORT:$SPRING_DOCKER_PORT
+      - $DEBUG_PORT:$DEBUG_PORT
+    depends_on:
+      - postgresdb
+    restart: on-failure
+    image: smart-estate
+    env_file: ./.env
+    environment:
+      SPRING_APPLICATION_JSON: '{
+        "spring.datasource.url" : "$SPRING_DATASOURCE_URL",
+        "spring.datasource.username" : "$POSTGRES_USER",
+        "spring.datasource.password" : "$POSTGRES_PASSWORD",
+        "spring.jpa.properties.hibernate.dialect" : "$SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT",
+        "spring.jpa.hibernate.ddl-auto" : "$SPRING_JPA_HIBERNATE_DDL_AUTO",
+        "jwt.expiration": "$JWT_EXPIRATION_MS",
+        "jwt.secret": "$JWT_SECRET"
+      }'
+      JAVA_TOOL_OPTIONS: "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:$DEBUG_PORT"
+
+
+  postgresdb:
+    platform: linux/arm64
+    image: postgres
+    restart: unless-stopped
+    env_file: ./.env
+    ports:
+      - $POSTGRES_LOCAL_PORT:$POSTGRES_DOCKER_PORT
+    environment:
+      - POSTGRES_DB=$POSTGRES_DATABASE
+      - POSTGRES_PASSWORD=$POSTGRES_PASSWORD
+    healthcheck:
+      test: [ "CMD", "pg_isready -U postgres" ]
+      timeout: 30s
+      retries: 3
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - $FRONTEND_LOCAL_PORT:$FRONTEND_DOCKER_PORT
