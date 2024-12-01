@@ -1,0 +1,87 @@
+.header {
+  padding: 32px 0;
+}
+
+.header__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__logo {
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 20.4px;
+}
+
+.header__nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 352px;
+  column-gap: 22px;
+
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16.8px;
+}
+
+.header__navLink:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.header__authorization {
+  display: flex;
+}
+
+.authorization__element {
+  width: 96px;
+  height: 33px;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: all 0.2s ease;
+}
+
+.authorization__element:active {
+  color: grey;
+}
+
+.header__registration {
+  border: 1px solid black;
+  border-radius: 32px;
+}
+
+.header__registration:hover {
+  color: #fff;
+  background-color: #000000;
+}
+
+.header__authentication:hover {
+  opacity: 0.7;
+}
+
+.authorized {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.liked {
+  width: 24px;
+  height: 24px;
+
+  margin-right: 16px;
+}
+
+.profile {
+  width: 32px;
+  height: 32px;
+}

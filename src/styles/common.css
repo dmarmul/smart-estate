@@ -1,0 +1,18 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Trirong', serif;
+  color: #000;
+}
+
+.container {
+  width: 1180px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+.modal {
+  pointer-events: auto !important; /* Включаем возможность взаимодействовать с элементами внутри модалки */
+}

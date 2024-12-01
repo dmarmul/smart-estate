@@ -1,0 +1,74 @@
+.neighborhoods {
+  margin-bottom: 104px;
+}
+
+.neighborhoods__text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 40px;
+}
+
+.neighborhoods__title {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32.4px;
+
+  margin-bottom: 8px;
+}
+
+.neighborhoods__description {
+  color: #858585;
+
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 22.95px;
+}
+
+.neighborhoods__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 16px 32px;
+  margin-bottom: 24px;
+}
+
+.showMore {
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.showMore__btn::after {
+  position: absolute;
+  content: '';
+  left: 0;
+  bottom: -8px;
+  height: 1px;
+  width: 100%;
+  background-color: #000;
+}
+
+.showMore__btn {
+  position: relative;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16.8px;
+}
+
+@media (max-width: 1024px) {
+  .neighborhoods__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .neighborhoods__grid {
+    grid-template-columns: 1fr;
+    gap: 12px 16px;
+  }
+}
