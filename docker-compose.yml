@@ -13,14 +13,14 @@ services:
 
   backend:
     build:
-      context: ./backend-repo
+      context: ./backend
     ports:
       - $SPRING_LOCAL_PORT:$SPRING_DOCKER_PORT
       - $DEBUG_PORT:$DEBUG_PORT
     depends_on:
       - postgresdb
     restart: on-failure
-    image: bager24/smart-estate-backend-1
+    image: bager24/smart-estate-backend-3
     env_file: ./.env
     environment:
       SPRING_APPLICATION_JSON: '{
