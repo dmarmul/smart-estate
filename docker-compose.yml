@@ -13,7 +13,7 @@ services:
 
   backend:
     build:
-      context: ./backend
+      context: ./backend-repo
     ports:
       - $SPRING_LOCAL_PORT:$SPRING_DOCKER_PORT
       - $DEBUG_PORT:$DEBUG_PORT
@@ -33,9 +33,3 @@ services:
         "jwt.secret": "$JWT_SECRET"
       }'
       JAVA_TOOL_OPTIONS: "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:$DEBUG_PORT"
-
-  frontend:
-    build:
-      context: ./frontend
-    ports:
-      - $FRONTEND_LOCAL_PORT:$FRONTEND_DOCKER_PORT
