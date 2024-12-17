@@ -20,7 +20,7 @@ services:
     depends_on:
       - postgresdb
     restart: on-failure
-    image: bager24/smart-estate-backend-5
+    image: bager24/smart-estate-backend-6
     env_file: ./.env
     environment:
       SPRING_APPLICATION_JSON: '{
